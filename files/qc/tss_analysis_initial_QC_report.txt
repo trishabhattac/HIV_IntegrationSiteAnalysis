@@ -1,0 +1,93 @@
+HIV-1 INTEGRATION SITE ANALYSIS
+Initial Data Import and Quality Control Report
+==============================================================================
+
+Source dataset:
+  ppat.1006460.s012.xlsx
+
+Total integration-site records:
+  448,282
+
+Required columns:
+  - Replicate
+  - CloneID
+  - Chr
+  - Position
+  - Orientation
+  - Virus
+  - Treatment
+  - SourceSheet
+
+Missing values:
+             Missing_values
+Replicate                 0
+CloneID                   0
+Chr                       0
+Position                  0
+Orientation               0
+Virus                     0
+Treatment                 0
+SourceSheet               0
+
+Integration sites by experimental group:
+Virus Treatment  Number_of_sites
+ N74D      Dig0            63142
+ N74D    Dig400           100491
+   WT      Dig0           161418
+   WT    Dig400           123231
+
+Integration sites by replicate:
+Virus Treatment  Replicate  Number_of_sites
+ N74D      Dig0          1            15890
+ N74D      Dig0          2            22150
+ N74D      Dig0          3            25102
+ N74D    Dig400          1            32004
+ N74D    Dig400          2            30071
+ N74D    Dig400          3            38416
+   WT      Dig0          1            56504
+   WT      Dig0          2            52736
+   WT      Dig0          3            52178
+   WT    Dig400          1            49214
+   WT    Dig400          2            35213
+   WT    Dig400          3            38804
+
+Chromosomal distribution:
+Chromosome  Number_of_sites
+      chr1            36446
+     chr10            14699
+     chr11            23082
+     chr12            26550
+     chr13            13260
+     chr14            12825
+     chr15            12309
+     chr16            20133
+     chr17            28328
+     chr18             8749
+     chr19            19372
+      chr2            31146
+     chr20            10171
+     chr21             5961
+     chr22             7968
+      chr3            28702
+      chr4            26444
+      chr5            22976
+      chr6            25888
+      chr7            22743
+      chr8            20555
+      chr9            16762
+      chrX            11783
+      chrY             1430
+
+Integration-site orientation:
+Orientation  Number_of_sites
+          -           224360
+          +           223922
+
+CloneID assessment:
+  Total records: 448,282
+  Unique CloneIDs: 447,867
+  Records with duplicated CloneID: 830
+
+Genomic-coordinate assessment:
+  Unique chromosome-position coordinates: 447,867
+  Records belonging to duplicated coordinates: 830
