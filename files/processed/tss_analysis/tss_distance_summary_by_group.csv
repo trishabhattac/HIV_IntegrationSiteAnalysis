@@ -1,0 +1,5 @@
+Virus,Treatment,Number_of_sites,Mean_distance_bp,Median_distance_bp,SD_distance_bp,Q1_distance_bp,Q3_distance_bp,Minimum_distance_bp,Maximum_distance_bp,IQR_distance_bp
+N74D,Dig0,63142,27828.9,10643.5,50256.8,3777.0,29255.8,0,656173,25478.8
+N74D,Dig400,100491,25077.0,9875.0,46718.7,3625.0,26224.5,0,600647,22599.5
+WT,Dig0,161418,12073.0,5487.0,23567.1,2093.0,12997.0,0,637233,10904.0
+WT,Dig400,123231,15112.2,6706.0,28288.7,2568.0,16156.0,0,564193,13588.0

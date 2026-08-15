@@ -1,0 +1,46 @@
+HIV-1 INTEGRATION SITE → TSS DISTANCE ANALYSIS
+PRELIMINARY SUMMARY
+
+Input
+integration_sites_with_TSS.csv
+
+Total integration sites
+448,282
+
+Dataset
+Unique integration sites: 448,282
+Unique chromosomes: 24
+Unique genes: 28,220
+Unique transcripts: 50,571
+
+TSS distance by experimental group
+
+Virus   Treatment    Sites    Mean (bp)    Median (bp)    SD (bp)    Q1 (bp)    Q3 (bp)    Min (bp)    Max (bp)
+N74D   Dig0           63142     27,828.9       10,643.5     50,256.8     3,777.0    29,255.8           0     656,173
+N74D   Dig400        100491     25,077.0        9,875.0     46,718.7     3,625.0    26,224.5           0     600,647
+WT     Dig0          161418     12,073.0        5,487.0     23,567.1     2,093.0    12,997.0           0     637,233
+WT     Dig400        123231     15,112.2        6,706.0     28,288.7     2,568.0    16,156.0           0     564,193
+
+Distance windows
+
+Virus   Treatment    Sites    ≤1 kb    ≤5 kb    ≤10 kb    ≤25 kb    ≤50 kb    ≤100 kb
+N74D   Dig0           63142     7.83%    31.06%     48.28%     71.59%     85.21%      93.81%
+N74D   Dig400        100491     7.78%    32.14%     50.34%     73.93%     87.34%      95.07%
+WT     Dig0          161418    13.41%    47.26%     68.02%     88.89%     96.11%      98.84%
+WT     Dig400        123231    10.96%    41.45%     61.78%     84.79%     94.22%      98.16%
+
+Replicate-level medians
+
+Virus   Treatment    Replicate    Sites    Median (bp)    Q1 (bp)    Q3 (bp)
+N74D   Dig0               1     15890       10,504.0     3,782.0    28,571.5
+N74D   Dig0               2     22150       10,622.0     3,731.2    29,434.5
+N74D   Dig0               3     25102       10,787.5     3,839.2    29,673.2
+N74D   Dig400             1     32004        9,873.0     3,638.8    26,110.2
+N74D   Dig400             2     30071        9,765.0     3,600.0    26,444.0
+N74D   Dig400             3     38416        9,955.5     3,628.0    26,186.2
+WT     Dig0               1     56504        5,508.5     2,095.0    13,105.0
+WT     Dig0               2     52736        5,539.0     2,099.0    13,125.2
+WT     Dig0               3     52178        5,415.5     2,085.0    12,756.8
+WT     Dig400             1     49214        6,699.0     2,526.0    16,170.0
+WT     Dig400             2     35213        6,730.0     2,616.0    16,211.0
+WT     Dig400             3     38804        6,692.0     2,586.8    16,073.8
