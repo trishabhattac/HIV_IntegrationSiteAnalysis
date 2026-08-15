@@ -49,7 +49,6 @@ warnings.filterwarnings(
     message="Strand data from other will be added as strand data to self.*"
 )
 
-
 # REQUIRED COLUMNS
 
 INTEGRATION_COLUMNS = [
