@@ -1,0 +1,4 @@
+File,Total_reads,Minimum_length_bp,Q1_length_bp,Median_length_bp,Mean_length_bp,Q3_length_bp,Maximum_length_bp,Reads_below_3500bp,Reads_at_or_above_3500bp,Percent_retained_3500bp
+77_3_raw.fastq,314,13,175.25,438.5,1031.468152866242,1410.0,8708,296,18,5.7324840764331215
+Pos1_raw.fastq,294,16,103.0,236.0,854.9115646258504,897.75,13826,281,13,4.421768707482993
+Pos3_raw.fastq,442,7,142.25,447.0,967.262443438914,1211.5,10413,420,22,4.97737556561086
