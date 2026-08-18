@@ -6,7 +6,7 @@ Generate descriptive figures for the HIV-1 integration-site TSS analysis.
 Figures:
     1. Median distance to nearest TSS with Q1-Q3 range
     2. Number of integration sites within discrete TSS-distance bins
-    3. Median distance to nearest TSS across biological replicates
+    3. Median distance to nearest TSS across experimental replicates
 
 Input files:
     files/processed/tss_analysis/tss_distance_summary_by_group.csv
@@ -304,7 +304,7 @@ plt.close()
 # REPLICATE-LEVEL MEDIAN DISTANCES
 
 print("\nGenerating Figure 3...")
-print("  Showing median TSS distance across biological replicates.")
+print("  Showing median TSS distance across experimentalreplicates.")
 
 
 replicate_plot = replicate_df.copy()
@@ -341,11 +341,11 @@ for group in group_order_labels:
     )
 
 
-ax.set_xlabel("Biological replicate")
+ax.set_xlabel("Experimental replicate")
 ax.set_ylabel("Median distance to nearest TSS (bp)")
 
 ax.set_title(
-    "Median TSS distance across biological replicates"
+    "Median TSS distance across experimental replicates"
 )
 
 ax.legend(
