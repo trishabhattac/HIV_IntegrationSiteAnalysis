@@ -304,7 +304,7 @@ plt.close()
 # REPLICATE-LEVEL MEDIAN DISTANCES
 
 print("\nGenerating Figure 3...")
-print("  Showing median TSS distance across experimentalreplicates.")
+print("  Showing replicate-level median TSS distances by experimental group.")
 
 
 replicate_plot = replicate_df.copy()
@@ -315,33 +315,62 @@ replicate_plot["Group"] = (
     + replicate_plot["Treatment"].astype(str)
 )
 
-
 replicate_plot["Replicate"] = (
-    replicate_plot["Replicate"].astype(str)
+    replicate_plot["Replicate"].astype(int)
 )
+
+
+# Experimental groups on the x-axis
+x = np.arange(len(group_order_labels))
+
+# Slight horizontal offsets allow the three replicate points
+# within each experimental group to be seen separately.
+replicate_offsets = {
+    1: -0.12,
+    2: 0.00,
+    3: 0.12,
+}
 
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
-for group in group_order_labels:
 
-    subset = replicate_plot[
-        replicate_plot["Group"] == group
-    ].sort_values("Replicate")
+for replicate in [1, 2, 3]:
 
-    if subset.empty:
-        continue
+    x_values = []
+    y_values = []
 
-    ax.plot(
-        subset["Replicate"],
-        subset["Median_distance_bp"],
-        marker="o",
-        linewidth=1.5,
-        label=group,
+    for group_index, group in enumerate(group_order_labels):
+
+        row = replicate_plot[
+            (replicate_plot["Group"] == group)
+            & (replicate_plot["Replicate"] == replicate)
+        ]
+
+        if row.empty:
+            continue
+
+        x_values.append(
+            group_index + replicate_offsets[replicate]
+        )
+
+        y_values.append(
+            row.iloc[0]["Median_distance_bp"]
+        )
+
+    ax.scatter(
+        x_values,
+        y_values,
+        s=70,
+        label=f"Replicate {replicate}",
+        zorder=3,
     )
 
 
-ax.set_xlabel("Experimental replicate")
+ax.set_xticks(x)
+ax.set_xticklabels(group_order_labels)
+
+ax.set_xlabel("Experimental group")
 ax.set_ylabel("Median distance to nearest TSS (bp)")
 
 ax.set_title(
@@ -349,7 +378,7 @@ ax.set_title(
 )
 
 ax.legend(
-    title="Experimental group",
+    title="Experimental replicate",
     frameon=False,
 )
 
