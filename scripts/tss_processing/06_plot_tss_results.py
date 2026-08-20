@@ -417,3 +417,126 @@ figure_2_df.to_csv(
     bin_output_path,
     index=False,
 )
+
+# --------------------------------------------------------
+# Figure 4: Distribution of integration sites by
+# non-overlapping nearest-TSS distance bins
+# --------------------------------------------------------
+windows = pd.read_csv(
+    PROJECT_ROOT
+    / "files"
+    / "processed"
+    / "tss_analysis"
+    / "tss_distance_windows_by_group.csv"
+)
+
+windows["0–1 kb"] = windows["Percent_within_1kb"]
+
+windows["1–5 kb"] = (
+    windows["Percent_within_5kb"]
+    - windows["Percent_within_1kb"]
+)
+
+windows["5–10 kb"] = (
+    windows["Percent_within_10kb"]
+    - windows["Percent_within_5kb"]
+)
+
+windows["10–25 kb"] = (
+    windows["Percent_within_25kb"]
+    - windows["Percent_within_10kb"]
+)
+
+windows["25–50 kb"] = (
+    windows["Percent_within_50kb"]
+    - windows["Percent_within_25kb"]
+)
+
+windows["50–100 kb"] = (
+    windows["Percent_within_100kb"]
+    - windows["Percent_within_50kb"]
+)
+
+windows[">100 kb"] = (
+    100 - windows["Percent_within_100kb"]
+)
+
+distance_bins = [
+    "0–1 kb",
+    "1–5 kb",
+    "5–10 kb",
+    "10–25 kb",
+    "25–50 kb",
+    "50–100 kb",
+    ">100 kb",
+]
+
+windows["Bin_total"] = windows[distance_bins].sum(axis=1)
+
+print(
+    windows[
+        ["Virus", "Treatment", "Bin_total"]
+    ]
+)
+print("\nGenerating Figure 4...")
+print("  Showing within-group percentage of integration sites by TSS-distance bin.")
+
+import numpy as np
+
+
+# Define the order in which experimental groups are plotted
+group_order = [
+    ("WT", "Dig0"),
+    ("WT", "Dig400"),
+    ("N74D", "Dig0"),
+    ("N74D", "Dig400"),
+]
+
+x = np.arange(len(distance_bins))
+bar_width = 0.20
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+for i, (virus, treatment) in enumerate(group_order):
+
+    group_row = windows[
+        (windows["Virus"] == virus)
+        & (windows["Treatment"] == treatment)
+    ].iloc[0]
+
+    percentages = [
+        group_row[bin_name]
+        for bin_name in distance_bins
+    ]
+
+    ax.bar(
+        x + (i - 1.5) * bar_width,
+        percentages,
+        width=bar_width,
+        label=f"{virus}-{treatment}",
+    )
+
+ax.set_xlabel("Distance from nearest TSS")
+ax.set_ylabel("Percentage of integration sites (%)")
+
+ax.set_xticks(x)
+ax.set_xticklabels(distance_bins)
+
+ax.legend(title="Experimental group")
+
+fig.tight_layout()
+
+figure_4_path = (
+    FIGURE_DIR
+    / "figure_4_tss_distance_distribution_percent.png"
+)
+
+fig.savefig(
+    figure_4_path,
+    dpi=300,
+    bbox_inches="tight",
+)
+
+plt.close(fig)
+
+print(f"  Saved: {figure_4_path}")
